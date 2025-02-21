@@ -1,6 +1,7 @@
 #include <stdio.h>
 /**
  * main - prints _putchar
+ * @char:char
  * Return:0
  */
 int _putchar(char);
