@@ -1,13 +1,13 @@
 #include "main.h"
 /**
- * print_diagonal - draws a diagonal on the terminal
+ * print_square - draws a diagonal on the terminal
  * @size: size of the square
  */
 void print_square(int size)
 {
 	int i, j;
 
-	if (n <= 0)
+	if (size <= 0)
 	{
 		_putchar('\n');
 	}
