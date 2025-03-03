@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdio.h>
 /**
- * *memset - fills the pointed memory with a constant byte
+ * memset - fills the pointed memory with a constant byte
  * @s:area of the memory
  * @b:constant byte to fill
  * @n:number of bytes to be filled
