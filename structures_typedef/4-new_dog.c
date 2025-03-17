@@ -1,80 +1,49 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "dog.h"
+#include <stdlib.h>
 
 /**
- * _strlen - return length of a string
- *
- * @s: char type
- * Return:  length of string
+ * new_dog - create a new dog
+ * @name: char string name
+ * @age: int age
+ * @owner: char string owner
+ * Return: pointer to new dog
  */
-
-int _strlen(char *s)
-{
-	int a;
-
-	for (a = 0; s[a] != '\0'; a++)
-	{
-
-	}
-	return (a);
-}
-/**
- * _strcpy - function to copy string from source to destination
- *@dest: pointer to destinatioin of string to be copied
- *@src: pointer to source of string to be copied
- * Return: return the value at dest
- */
-
-char *_strcpy(char *dest, char *src)
-{
-	int a;
-
-	for (a = 0; src[a] != '\0'; a++)
-	{
-		dest[a] = src[a];
-	}
-	dest[a] = '\0';
-	return (dest);
-}
-/**
- * *new_dog - function to create new dog struct
- * @name: char type
- * @age: float type
- * @owner: char type
- * Return: Always success
- */
-
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *newd;
+	struct dog *doge;
+	int i, j, k;
+	char *n, *o;
 
-	newd = malloc(sizeof(struct dog));
-	if (newd == NULL)
+	doge = malloc(sizeof(struct dog));
+	if (doge == NULL)
 		return (NULL);
 
-	if (name == NULL)
+	for (i = 0; name[i] != '\0'; i++)
+		;
+	for (j = 0; owner[j] != '\0'; j++)
+		;
+
+	n = malloc(sizeof(char) * i + 1);
+	if (n == NULL)
 	{
-		free(newd);
+		free(doge);
 		return (NULL);
 	}
-	newd->name = malloc(sizeof(char) * (_strlen(name) + 1));
-	if (newd->name == NULL)
-		return (NULL);
-	_strcpy(newd->name, name);
-
-	newd->age = age;
-
-	if (owner == NULL)
+	o = malloc(sizeof(char) * j + 1);
+	if (o == NULL)
 	{
-		free(newd->owner);
-		free(newd);
+		free(n);
+		free(doge);
 		return (NULL);
 	}
-	newd->owner = malloc(sizeof(char) * (_strlen(owner) + 1));
-	if (newd->owner == NULL)
-		return (NULL);
-	_strcpy(newd->owner, owner);
+	for (k = 0; k <= i; k++)
+		n[k] = name[k];
+	for (k = 0; k <= j; k++)
+		o[k] = owner[k];
 
-	return (newd);
+	doge->name = n;
+	doge->age = age;
+	doge->owner = o;
+
+	return (doge);
 }
